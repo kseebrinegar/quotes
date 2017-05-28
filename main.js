@@ -1,22 +1,41 @@
 var quotesList = ['hello', 'dude', 'crazy', 'world', 'love'];
 var button = document.getElementById('quoteEvent');
-var sentence = (document.getElementsByClassName('quoteSentence'));
-var arr = [];
-for(var i = 0, n; n = sentence[i]; ++i) {
-	arr.push(n);
-}
+var sentence = document.getElementsByClassName('quoteSentence');
 
 
 button.addEventListener('click', function() {
-		var randomList = random(arr);
-		var randomQuote = random(quotesList);
-		sentence[arr].textContent = randomQuote;
-	
+	// 
+	for (var i = 0; i < sentence.length; i++) {
+		if (sentence[i].textContent) {
+			console.log('yes');
+			sentence[i].textContent = '';
+		
+		} else {
+			break;
+		}
+	}
+		
+
+	var randomNumber = num();
+	var randomQuote = random();
+	sentence[randomNumber].textContent = randomQuote;
+
 });
 
-function random(index) {
-	var randomnum = Math.floor(Math.random() * index.length);
+
+function num() {
+	var randomnum = Math.floor(Math.random() * sentence.length);
+	return randomnum;
+
+}
+
+function random() {
+	var randomnum = Math.floor(Math.random() * quotesList.length);
 	return quotesList[randomnum];
 
 }
+
+
+
+
 
